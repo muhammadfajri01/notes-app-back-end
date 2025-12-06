@@ -1,12 +1,13 @@
 const hapi = require('@hapi/hapi');
-const routes = require('./src/routes');
+const routes = require('./routes');
 
 const init = async () => {
   const server = hapi.server({
     port: 5000,
     host: 'localhost',
-    routes: routes,
   });
+
+  server.route(routes);
 
   await server.start();
   console.log(`Server berjalan pada ${server.info.uri}`);
